@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Examenes</title>
+  
+  
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css'>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+      <link rel="stylesheet" href="css/style.css">
+<script>
+  function verColor(element){
+    var elee=element.parentNode;
+    var Nele=elee.getElementsByClassName("number-of-votes")[0];
+    
+    var color=element.parentNode.parentNode;
+    var votes=Nele.innerHTML;
+    if(votes === 0) {
+        votes = "gray";
+      } else if(votes < 1) {
+        votes = "red";
+      } else if(votes >= 1 && votes <= 4) {
+        votes = "yellow";
+      } else if(votes >= 5) {
+        votes = "green";
+      }
+     
+     color.setAttribute("data-color",votes);
+   } 
+  function voteup(element){
+
+    var ele=element.parentNode;
+    var Nele=ele.getElementsByClassName("number-of-votes")[0];
+    verColor(element);
+    Nele.innerHTML++;
+    
+  }
+  function votedown(element){
+
+    var ele=element.parentNode;
+    var Nele=ele.getElementsByClassName("number-of-votes")[0];
+    verColor(element);
+    Nele.innerHTML--;
+   
+  }
+  function cargarPdf(element,ruta){
+
+     var ele=element.parentNode;
+     
+var spanIcon=document.createElement("span");
+     var iconoRespuestas='<i class="fab fa-resolving"></i>'
+     spanIcon.innerHTML=iconoRespuestas;
+     ele.appendChild(spanIcon);
+
+     var content='<embed src="'+ruta+'" width="600" height="500" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">'
+     var cont=document.createElement("div");
+     cont.innerHTML=content;
+     ele.appendChild(cont);
+     
+     
+     alert("cargando pdf")
+  }
+  function darRespuestas(){
+
+
+  }
+</script>
+  
+</head>
+
+<body>
+
+  <div class="vue-wrapper">
+  <div id="vue">
+    <div class="search-area">
+      <h1>Examenes , Practicas y Ejercicios de FisicaIV</h1>
+      <div class="input-wrapper">
+        <i class="fa fa-search"></i>
+        <input v-model="searchString" type="text" placeholder="Busque la pregunta o el examen que quiera"/>
+      </div>
+      <button @click="resetSearch()">Log</button>
+    </div>
+  <% for(let i = 0; i < posts.length; i++) { 
+    var votes=posts[i].votes
+    if(votes === 0) {
+        votes = "gray";
+      } else if(votes < 1) {
+        votes = "red";
+      } else if(votes >= 1 && votes <= 4) {
+        votes = "yellow";
+      } else if(votes >= 5) {
+        votes = "green";
+      }
+      posts[i].path=votes
+%>
+
+      
+    <div class="question" data-color="<%= posts[i].path %>" id="a<%= i %>" >
+      <div class="votes">
+        <div class="upvote" onclick="voteup(this)" id="b<%= i %>" ></div>
+        <div class="number-of-votes" id="vote<%= i %>"><%= posts[i].votes %></div>
+        <div class="downvote" onclick="votedown(this)" ></div>
+      </div>
+
+      <div class="question-and-answer">
+        <h2><%= posts[i].title %></h2>
+        <p> <%= posts[i].question %></p>
+      </div>
+      <button>Subir Respuestas</button>
+      <span onclick="cargarPdf(this,'/pdf/fisica4.pdf')">
+        <i class="far fa-file-pdf"></i>
+      </span>
+ 
+    </div>
+      <%}%>
+  </div>
+</div>
+
+</body>
+
+</html>

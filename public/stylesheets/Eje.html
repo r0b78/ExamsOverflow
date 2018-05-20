@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <title>ExamOverflow</title>
+	 <meta charset="utf-8" />
+	 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	 <link rel="stylesheet" type="text/css" href="/stylesheets/examenes.css"/> 
+	 <style type="text/css" href="/stylesheets/examenes.css">
+	 	
+	 </style>
+</head>
+
+<body>
+<div class="vue-wrapper">
+  <div id="vue">
+    <div class="search-area">
+      <h1>Questions and Answers</h1>
+      <div class="input-wrapper">
+        <i class="fa fa-search"></i>
+        <input v-model="searchString" type="text" placeholder="Have a question? Search for answers with keywords"/>
+      </div>
+      <button @click="resetSearch()">Reset</button>
+    </div>
+
+    <div class="question">
+      <div class="votes">
+        <div class="upvote" @click="vote('up', question)"></div>
+        <div class="number-of-votes">{{ question.votes }}</div>
+        <div class="downvote" @click="vote('down', question)"></div>
+      </div>
+
+      <div class="question-and-answer">
+      	<% for(let i = 0; i < posts.length; i++) { %>
+				<article>
+					<h2>
+						<%= posts[i].question%>
+					</h1>
+					<p>
+					 		<%= posts[i].answer %>
+					</p>
+				</article>
+				<% } %>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+
+
+
+
+</html>
