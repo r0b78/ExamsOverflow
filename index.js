@@ -36,7 +36,18 @@ var e = [
        		votes: 5
         }
     ]
+var resp=[
+    {
+      preguntas:["1","2","Problema 2","Problema 3"],
+      respuestas:["V","V","12,432","43,1"]
 
+    },
+        {
+      preguntas:["1","6","Problema 2","Problema 3"],
+      respuestas:["V","F","8,432","37,1"]
+
+    }
+]
   app.use(express.static(path.join(__dirname, 'public')))
   app.set('views', path.join(__dirname, 'views'))
   app.set('view engine', 'ejs')
@@ -55,7 +66,9 @@ var e = [
         app.get("/Tec",function(req,res,next){
 	res.render('pages/Navegacion', {posts: e });
 })
-
+     app.get("/subirRespuestas",function(req,res,next){
+  res.render('pages/subirRespuestas', {posts: e });
+})
 
 
 

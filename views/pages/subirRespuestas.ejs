@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to my blog</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <script>
+    	function darRespuestas(element){
+    		var elems='<input type="text" name="demo-name" id="demo-name" value="" placeholder="Numero o Nombre de Pregunta">'
+
+    		var elems2='<input type="email" name="demo-email" id="demo-email" value="" placeholder="Respuesta">'
+            var ele=document.getElementsByClassName('6u 12u$(xsmall)')[0];
+            	//alert(ele);
+            var spanIcon=document.createElement("div");
+            spanIcon.setAttribute("class","6u 12u$(xsmall)");
+            spanIcon.innerHTML=elems;
+
+            var spanIcon2=document.createElement("div");
+            spanIcon2.setAttribute("class","6u$ 12u$(xsmall)");
+            spanIcon2.innerHTML=elems2;
+     		ele.parentNode.insertBefore(spanIcon,ele);
+     		ele.parentNode.insertBefore(spanIcon2,ele);		
+     		
+    	}	
+
+    </script>
+</head>
+<body>
+	<div id="main">
+
+<section>
+	<form method="post" action="#" class="alt">
+    <div class="row uniform">
+        <div class="6u 12u$(xsmall)">
+            <input type="text" name="demo-name" id="demo-name" value="" placeholder="Numero o Nombre de Pregunta">
+        </div>
+        <div class="6u$ 12u$(xsmall)">
+            <input type="email" name="demo-email" id="demo-email" value="" placeholder="Respuesta">
+        </div>
+        <ul class="actions">
+        	<li>
+        		<button type=button class="button special fit" onclick="darRespuestas(this)">Nuevo Campo de Texto</button></li>
+        </ul>
+        <br>
+        <ul class="actions">
+			<li><input type="submit" value="Subir Respuestas" /></li>
+		</ul>
+
+		        <ul class="actions">
+			<li><input type="button" href="/FisicaIV" value="Devolverse a Examenes" /></li>
+		</ul>
+        <!-- Break -->
+    </div>
+</form>
+</div>
+</body>
+</html>

@@ -51,6 +51,7 @@
 var spanIcon=document.createElement("span");
      var iconoRespuestas='<i class="fab fa-resolving"></i>'
      spanIcon.innerHTML=iconoRespuestas;
+     spanIcon.setAttribute("onclick","darRespuestas(this)")
      ele.appendChild(spanIcon);
 
      var content='<embed src="'+ruta+'" width="600" height="500" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">'
@@ -59,9 +60,20 @@ var spanIcon=document.createElement("span");
      ele.appendChild(cont);
      
      
-     alert("cargando pdf")
   }
-  function darRespuestas(){
+  function darRespuestas(element){
+
+     var ele=element.parentNode;
+     
+var spanIcon=document.createElement("span");
+     var iconoRespuestas='<h3>Pregunta :Esta puede ser una respuesta</h3>'
+     spanIcon.innerHTML=iconoRespuestas;
+     ele.appendChild(spanIcon);
+
+   
+
+  }
+  function subirRespuestas(elem){
 
 
   }
@@ -107,7 +119,7 @@ var spanIcon=document.createElement("span");
         <h2><%= posts[i].title %></h2>
         <p> <%= posts[i].question %></p>
       </div>
-      <button>Subir Respuestas</button>
+      <button  onclick='location.href="/subirRespuestas"''>Subir Respuestas</button>
       <span onclick="cargarPdf(this,'/pdf/fisica4.pdf')">
         <i class="far fa-file-pdf"></i>
       </span>
